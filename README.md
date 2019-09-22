@@ -1,6 +1,8 @@
 # HumTmp Arduino Website
 Simple page and/or python code shows the values of Arduino humidity and temperature sensors received via UDP 
 
+![Arduino_Image](Arduino_Image.jpg)
+
 ## Usage 
 You can run one of the following to receive UDP packets
 - Run python version
