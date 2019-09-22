@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>HumTmp</title>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+<script>
+  setInterval(function(){
+    console.log("Good")
+    $.ajax({
+        type: 'GET',
+        url: "http://localhost:2000/" + 'api',
+        success: function (result) {
+          json_obj = JSON.parse(result)
+          console.log("Here are the response in json format: " + result);
+          console.log("result['temperature']: " + json_obj['temperature'])                            
+          $('#tmp').empty();
+          $('#hum').empty();
+          $('#tmp').append(''+json_obj['temperature']+' C');
+          $('#hum').append(''+json_obj['humidity']+'%');
+        }                                           
+    });
+}, 2000) /* time in milliseconds (ie 2 seconds)*/
+</script>
+<style>
+body {
+  background-color: rgb(26, 26, 26);
+  text-align: center;
+  color: white;
+  font-family: 'Montserrat', sans-serif;
+}
+
+#btn {
+  color: rgb(37, 37, 37)
+}
+
+    #hum,#tmp{
+        font-size:17px;
+    }
+</style>
+</head>
+<body>
+
+    <br><br>
+  <img src="http://www.psu.edu.sa/_Layouts/15/PSU/Design/en/images/nodata.png" alt="PSU Logo" style="width:auto">
+    <img src="http://riotu.psu.edu.sa/images/riotu-logo-w.png" alt="RIOTU Logo" style="width:auto; padding-left:15px">
+    <br>
+    <h1>Temperature and Humidity</h1>
+    <br>
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-6">
+          <img src="http://www.myatcapp.com/awslive/image/temperature.png" alt="Temperature" style="width:200px">
+          <br>
+          Temperature: <p id="tmp"></p>
+      </div>
+      <div class="col-sm-6">
+          <img src="https://png.pngtree.com/svg/20170122/humidity_886295.png" alt="Humidity" style="width:200px">
+          <br>
+          Humidity: <p id="hum"></p>
+      </div>
+    </div>
+  </div>
+
+  <!--<img src="avatar.png" alt="Avatar" style="width:200px">-->
+  <!--<button class="btn btn-lg btn-block" id="btn" value="Get Info" onClick="window.location.reload()">Get Info</button>-->
+    <p style="bottom: 60px; text-align: center;">Made by <a target="_blank" href="https://youtu.be/mvrjb8ecock">Mohanned Ahmed & Abdulrhamn Saad</a></p>
+</body>
+
+</html>
